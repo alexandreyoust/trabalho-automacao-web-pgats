@@ -2,28 +2,28 @@ name: Cypress Tests
 
 on:
   push:
-    branches: [main]  # Executa a pipeline quando houver push na branch main
+    branches: [main]  
   pull_request:
-    branches: [main]  # Executa a pipeline para pull requests na branch main
+    branches: [main]  
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-latest  # Ambiente padrão que oferece suporte para Cypress
+    runs-on: ubuntu-latest 
 
     steps:
       - name: Checkout do código
-        uses: actions/checkout@v2  # Faz o checkout do código no repositório
+        uses: actions/checkout@v2  
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Versão do Node.js, ajuste para a versão do seu projeto
+          node-version: '20.10.0'  
 
       - name: Instalar dependências
-        run: yarn install  # Instala as dependências do projeto com yarn
+        run: yarn install  
 
       - name: Rodar Cypress
-        run: yarn run test  # Comando para rodar o Cypress; certifique-se de que seja o comando correto
+        run: yarn run test  
         env:
-          # Variável de ambiente para prevenir erros de interface no GitHub Actions
+          
           CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
